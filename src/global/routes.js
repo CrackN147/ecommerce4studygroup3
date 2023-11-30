@@ -23,6 +23,10 @@ export const routes = [
     element: <AboutUsPage/>,
   },
   {
+    path: "/:lang/product/:productId",
+    element: <ProductPage/>,
+  },
+  {
     path: "*",
     element: <HomePage/>,
   },

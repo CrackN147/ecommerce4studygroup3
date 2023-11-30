@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
 
 .logo {
   width: auto;
@@ -21,9 +25,6 @@ code {
 }
 
 .search-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: relative;
   input {
     width: 100%;
@@ -51,8 +52,74 @@ code {
   }
 }
 
-.menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.truncate {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-overflow-clamp {
+  width: 100%;
+  /* this code clamps based on specified lines */
+  overflow: hidden;
+ -webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+display: -webkit-box;
+}
+
+.home-product-card {
+  padding: 10px;
+  flex-direction: column;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  img {
+    height: auto;
+    width: auto;
+    padding: 10px;
+    object-fit: fill;
+    max-width: 150px;
+    max-height: 150px;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  p {
+    font-size: 14px;
+    color: darkblue;
+  }
+}
+
+.product-full {
+  padding: 10px;
+  img {
+    height: auto;
+    width: auto;
+    padding: 10px;
+    object-fit: fill;
+    max-width: 300px;
+    max-height: 300px;
+  }
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  span {
+    font-size: 14px;
+    font-weight: 600;
+    color: darkblue;
+  }
+}
+
+.swiper-button-next:after, 
+.swiper-button-prev:after {
+  font-size: 25px;
+  color: #000;
 }
