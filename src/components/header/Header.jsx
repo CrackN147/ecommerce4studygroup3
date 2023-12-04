@@ -6,7 +6,7 @@ import search from 'theme/images/search.png';
 import cart from 'theme/images/shopping-cart.png';
 import fav from 'theme/images/favorite.png';
 export const Header = () => {
-  const { lang, langs, changeLanguage } = useContext(StaticDataContext);console.log(langs);
+  const { lang, langs, changeLanguage } = useContext(StaticDataContext);
   return (
     <header className='w-100'>
       <div className='row m-0 p-2'>

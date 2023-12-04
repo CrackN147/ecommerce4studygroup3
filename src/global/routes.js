@@ -27,6 +27,10 @@ export const routes = [
     element: <ProductPage/>,
   },
   {
+    path: "/:lang/search",
+    element: <SearchPage/>,
+  },
+  {
     path: "*",
     element: <HomePage/>,
   },

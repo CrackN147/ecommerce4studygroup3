@@ -13,5 +13,14 @@ export const enLangs = {
     rate: "Rate",
     description: "Description",
     similar: "Similar Products"
+  },
+  search: {
+    title: "Search",
+    filters: "Filters",
+    price: "Price",
+    rate: "Rate",
+    sort: "Sort",
+    sortByprice: "By Price",
+    sortByrating: "By Rating"
   }
 };
