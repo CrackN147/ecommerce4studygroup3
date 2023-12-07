@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { StaticDataContext } from 'global/contexts/StaticDataContext';
 import { Link } from "react-router-dom";
 import logo from 'theme/images/logo.jpg';
-import search from 'theme/images/search.png';
 import cart from 'theme/images/shopping-cart.png';
 import fav from 'theme/images/favorite.png';
+import { SearchBar } from './components';
 export const Header = () => {
   const { lang, langs, changeLanguage } = useContext(StaticDataContext);
   return (
@@ -19,12 +19,7 @@ export const Header = () => {
             />
           </Link>
         </div>
-        <div className='search-container d-flex justify-content-center align-items-center col col-4'>
-          <input type="text" />
-          <button>
-            <img src={search} alt='search' />
-          </button>
-        </div>
+        <SearchBar />
         <div className='col col-5 d-flex justify-content-center align-items-center'>
           <div className='row w-100'>
             <div className='col col-4'>

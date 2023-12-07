@@ -78,7 +78,8 @@ export const ProductDataProvider = ({ children }) => {
   return (
     <ProductDataContext.Provider value={{
       products,
-      categories
+      categories,
+      baseProducts
     }}>
       {children}
     </ProductDataContext.Provider>
