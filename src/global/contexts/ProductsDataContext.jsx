@@ -3,14 +3,20 @@ import {
   useState,
   useEffect
 } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { getAllProducts, getAllCategories } from 'global/api/endpoints';
 export const ProductDataContext = createContext();
 
 export const ProductDataProvider = ({ children }) => {
   let location = useLocation();
+  let [searchParams] = useSearchParams();
   const [baseProducts, setBaseProducts] = useState([]);
   const [products, setProducts] = useState([]);
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 4,
+    total: 0
+  });
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -18,6 +24,10 @@ export const ProductDataProvider = ({ children }) => {
       const products = await getAllProducts();
       if (products) {
         setBaseProducts(products);
+        setPagination(prev => ({
+          ...prev,
+          total: products.length
+        }));
       }
     }
     const fetchCategories = async () => {
@@ -54,12 +64,19 @@ export const ProductDataProvider = ({ children }) => {
               break;
             case 'sortBy':
               switch (value) {
-                case 'price':
+                case 'price-asc':
                   resultProducts.sort((a, b) => a.price - b.price);
                   break;
-                case 'rating':
-                  resultProducts.sort((a, b) => b.rate - a.rate);
+                case 'price-desc':
+                  resultProducts.sort((a, b) => b.price - a.price);
+                break;
+                case 'rating-rate':
+                  resultProducts.sort((a, b) => b.rating.rate - a.rating.rate);
                   break;
+                case 'rating-count':
+                  resultProducts.sort((a, b) => b.rating.count - a.rating.count);
+                  break;
+                
                 default:
                   break;
               }
@@ -68,17 +85,38 @@ export const ProductDataProvider = ({ children }) => {
               break;
           }
         });
+        let page = parseInt(params.get('page')) || 1;
+        let resProdLength = resultProducts.length;
+        setPagination(prev => ({
+          ...prev,
+          total: resProdLength
+        }));
+        resultProducts = resultProducts.slice(
+          (parseInt(page) - 1) * pagination.limit, 
+          parseInt(page) * pagination.limit
+        );
         setProducts(resultProducts);
       } else {
         setProducts(baseProducts);
       }
     }
-  }, [location, baseProducts]);
+  }, [location, baseProducts, pagination.limit]);
+
+  useEffect(() => {
+    let page = parseInt(searchParams.get('page'));
+    if (page) {
+      setPagination(prev => ({
+        ...prev,
+        page
+      }));
+    }
+  }, [searchParams]);
 
   return (
     <ProductDataContext.Provider value={{
       products,
       categories,
+      pagination,
       baseProducts
     }}>
       {children}

@@ -166,3 +166,44 @@ display: -webkit-box;
     width: 200px;
   }
 }
+
+.price-input {
+  width: 48%;
+  margin: 1%;
+  padding: 5px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.active-cat {
+  color: darkblue !important;
+  font-weight: bold !important;
+}
+
+.border-right {
+  border-right: 1px solid #ccc;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+  button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: transparent;
+    &:focus {
+      outline: none;
+    }
+    &.active {
+      background: darkblue;
+      color: #fff;
+    }
+  }
+}

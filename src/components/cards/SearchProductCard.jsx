@@ -11,6 +11,7 @@ export const SearchProductCard = ({ product }) => {
         <img src={product.image} alt={product.name} />
         <h3 className="text-overflow-clamp">{product.title}</h3>
         <p>{langs.product.price}: {product.price} $</p>
+        <p>{langs.product.rate}: {product.rating.rate}/{product.rating.count}</p>
       </div>
     </Link>
   );

@@ -18,9 +18,14 @@ export const enLangs = {
     title: "Search",
     filters: "Filters",
     price: "Price",
+    priceFromPlaceholder: "From",
+    priceToPlaceholder: "To",
     rate: "Rate",
     sort: "Sort",
-    sortByprice: "By Price",
-    sortByrating: "By Rating"
+    sortBy: "Select Sort Type",
+    sortBypriceASC: "By Price ASC",
+    sortBypriceDESC: "By Price DESC",
+    sortByRatingRate: "By Rating Rate",
+    sortByRatingCount: "By Rating Count"
   }
 };

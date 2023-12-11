@@ -18,9 +18,14 @@ export const kaLangs = {
     title: "ძებნა",
     filters: "ფილტრები",
     price: "ფასი",
+    priceFromPlaceholder: "დან",
+    priceToPlaceholder: "მდე",
     rate: "რეიტინგი",
     sort: "დახარისხება",
-    sortByprice: "ფასით",
-    sortByrating: "რეიტინგით"
+    sortBy: "აირჩიეთ დახარისხება",
+    sortBypriceASC: "ფასით ზრდადობით",
+    sortBypriceDESC: "ფასით კლებადობით",
+    sortByRatingRate: "რეიტინგი ზრდადობით",
+    sortByRatingCount: "რეიტინგი რაოდენობით"
   }
 };
