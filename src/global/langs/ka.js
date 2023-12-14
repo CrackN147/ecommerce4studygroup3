@@ -27,5 +27,12 @@ export const kaLangs = {
     sortBypriceDESC: "ფასით კლებადობით",
     sortByRatingRate: "რეიტინგი ზრდადობით",
     sortByRatingCount: "რეიტინგი რაოდენობით"
+  },
+  loginForm: {
+    title: "ავტორიზაცია",
+    username: "სახელი",
+    password: "პაროლი",
+    login: "შესვლა",
+    required: "აუცილებელია",
   }
 };

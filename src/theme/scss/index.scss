@@ -207,3 +207,51 @@ display: -webkit-box;
     }
   }
 }
+
+.login-form {
+  position: absolute;
+  bottom: -310px;
+    right: 10px;
+  width: 300px;
+  height: 300px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border: 1px solid #ccc;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  input {
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: transparent;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+    &.error {
+      border: 1px solid red;
+    }
+  }
+  label {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 4px 0;
+    color: red;
+  }
+  button {
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgba(0, 0, 147, 0.693);
+    color: #fff;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+}

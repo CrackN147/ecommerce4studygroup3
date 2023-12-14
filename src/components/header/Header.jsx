@@ -1,14 +1,23 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { StaticDataContext } from 'global/contexts/StaticDataContext';
+import { UserDataContext } from 'global/contexts/UserDataContext';
 import { Link } from "react-router-dom";
 import logo from 'theme/images/logo.jpg';
 import cart from 'theme/images/shopping-cart.png';
 import fav from 'theme/images/favorite.png';
+import profile from 'theme/images/profile.svg';
+import userActive from 'theme/images/userActive.svg';
 import { SearchBar } from './components';
+import { LoginForm } from 'components/modals/LoginForm';
 export const Header = () => {
   const { lang, langs, changeLanguage } = useContext(StaticDataContext);
+  const { isUser } = useContext(UserDataContext);
+  const [loginModal, setLoginModal] = useState(false);
+  const toggleLoginForm = () => {
+    setLoginModal(!loginModal);
+  }
   return (
-    <header className='w-100'>
+    <header className='w-100 border-bottom position-relative'>
       <div className='row m-0 p-2'>
         <div className='col col-1'>
           <Link to={`/${lang}`}>
@@ -41,17 +50,22 @@ export const Header = () => {
         </div>
         <div className='col col-2 d-flex justify-content-center align-items-center'>
           <div className='row w-100'>
-            <div className='col col-4 d-flex justify-content-center align-items-center'>
+            <div className='col col-3 d-flex justify-content-center align-items-center'>
               <Link to={`/${lang}/cart`}>
                 <img width="16" height="16" src={cart} alt='cart' />
               </Link>
             </div>
-            <div className='col col-4 d-flex justify-content-center align-items-center'>
+            <div className='col col-3 d-flex justify-content-center align-items-center'>
               <Link to={`/${lang}/favorites`}>
                 <img width="16" height="16" src={fav} alt='fav' />
               </Link>
             </div>
-            <div className='col col-4 d-flex justify-content-center align-items-center cursor-pointer'>
+            <div className='col col-3 d-flex justify-content-center align-items-center cursor-pointer'
+              onClick={toggleLoginForm}
+            >
+              <img width="16" height="16" src={!isUser ? profile : userActive} alt='profile' />
+            </div>
+            <div className='col col-3 d-flex justify-content-center align-items-center cursor-pointer'>
               <div onClick={changeLanguage}>
                 {lang === 'en' ? 'KA' : 'EN'}
               </div>
@@ -59,6 +73,11 @@ export const Header = () => {
           </div>
         </div>
       </div>
+      {loginModal ? 
+        <LoginForm
+          toggle={toggleLoginForm}
+        />
+      : null}
     </header>
   );
 }

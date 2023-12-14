@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer>
+    <footer className="border-top">
       <p>© 2021</p>
     </footer>
   );

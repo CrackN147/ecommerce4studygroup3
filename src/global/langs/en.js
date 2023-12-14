@@ -27,5 +27,12 @@ export const enLangs = {
     sortBypriceDESC: "By Price DESC",
     sortByRatingRate: "By Rating Rate",
     sortByRatingCount: "By Rating Count"
+  },
+  loginForm: {
+    title: "Authorization",
+    username: "Username",
+    password: "Password",
+    login: "Login",
+    required: "Required",
   }
 };

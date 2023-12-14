@@ -7,7 +7,7 @@ import {
   Footer
 } from './components';
 import { ProductDataProvider } from 'global/contexts/ProductsDataContext';
-
+import { UserDataProvider } from 'global/contexts/UserDataContext';
 const checkLanguage = () => {
   let windowUrl = window.location.href;
   let windowUrlArray = windowUrl.split('/');
@@ -23,19 +23,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <StaticDataProvider>
-        <ProductDataProvider>
-          <Header />
-          <Routes>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                element={route.element}
-              />
-            ))}
-          </Routes>
-          <Footer />
-        </ProductDataProvider>
+        <UserDataProvider>
+          <ProductDataProvider>
+            <Header />
+            <Routes>
+              {routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={route.element}
+                />
+              ))}
+            </Routes>
+            <Footer />
+          </ProductDataProvider>
+        </UserDataProvider>
       </StaticDataProvider>
     </BrowserRouter>
   );
