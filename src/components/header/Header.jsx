@@ -9,12 +9,17 @@ import profile from 'theme/images/profile.svg';
 import userActive from 'theme/images/userActive.svg';
 import { SearchBar } from './components';
 import { LoginForm } from 'components/modals/LoginForm';
+import { ProfileMenu } from 'components/modals/ProfileMenu';
 export const Header = () => {
   const { lang, langs, changeLanguage } = useContext(StaticDataContext);
   const { isUser } = useContext(UserDataContext);
   const [loginModal, setLoginModal] = useState(false);
+  const [profileMenu, setProfileMenu] = useState(false);
   const toggleLoginForm = () => {
     setLoginModal(!loginModal);
+  }
+  const toggleProfileMenu = () => {
+    setProfileMenu(!profileMenu);
   }
   return (
     <header className='w-100 border-bottom position-relative'>
@@ -61,7 +66,7 @@ export const Header = () => {
               </Link>
             </div>
             <div className='col col-3 d-flex justify-content-center align-items-center cursor-pointer'
-              onClick={toggleLoginForm}
+              onClick={!isUser ? toggleLoginForm : toggleProfileMenu}
             >
               <img width="16" height="16" src={!isUser ? profile : userActive} alt='profile' />
             </div>
@@ -76,6 +81,11 @@ export const Header = () => {
       {loginModal ? 
         <LoginForm
           toggle={toggleLoginForm}
+        />
+      : null}
+      {profileMenu ? 
+        <ProfileMenu
+          toggle={toggleProfileMenu}
         />
       : null}
     </header>

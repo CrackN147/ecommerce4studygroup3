@@ -34,5 +34,23 @@ export const kaLangs = {
     password: "პაროლი",
     login: "შესვლა",
     required: "აუცილებელია",
+  },
+  profileMenu: {
+    title: "გამარჯობა",
+    profile: "პროფილი",
+    logout: "გასვლა",
+  },
+  profilePage: {
+    title: "პროფილი",
+    name: "სახელი",
+    lastname: "გვარი",
+    email: "ელ-ფოსტა",
+    phone: "ტელეფონი",
+    address: "მისამართი",
+    city: "ქალაქი",
+    street: "ქუჩა",
+    number: "ნომერი",
+    zip: "საფოსტო კოდი",
+    save: "შენახვა"
   }
 };

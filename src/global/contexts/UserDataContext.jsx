@@ -4,9 +4,11 @@ import {
   useEffect
 } from 'react';
 import { getData, removeData } from 'global/storage';
+import { getUserInfo } from 'global/api/endpoints';
 export const UserDataContext = createContext();
 
 export const UserDataProvider = ({ children }) => {
+  const [userInfo, setUserInfo] = useState(null);
 
   const checkUser = (user) => {
     let dateNow = new Date().getTime();
@@ -29,6 +31,13 @@ export const UserDataProvider = ({ children }) => {
     removeData("User");
   }
 
+  const fetchUserData = async () => {
+    const data = await getUserInfo();
+    if (data) {
+      setUserInfo(data);
+    }
+  }
+
   useEffect(() => {
     let user = getData('User');
     if (user && checkUser(user)) {
@@ -36,11 +45,19 @@ export const UserDataProvider = ({ children }) => {
     }
   }, []);
 
+  useEffect(() => {
+    if (isUser) {
+      fetchUserData();
+    }
+  }, [isUser]);
+
   return (
     <UserDataContext.Provider value={{
       isUser,
       loginUser,
-      logoutUser
+      logoutUser,
+      userInfo,
+      fetchUserData
     }}>
       {children}
     </UserDataContext.Provider>

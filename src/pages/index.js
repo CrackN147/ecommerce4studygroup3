@@ -7,3 +7,4 @@ export {CartPage} from './cart/CartPage';
 export {CheckOutPage} from './checkout/CheckOutPage';
 export {GalleryPage} from './gallery/GalleryPage';
 export {FavoritesPage} from './favorites/FavoritesPage';
+export {ProfilePage} from './profile/ProfilePage';

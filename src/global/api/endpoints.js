@@ -1,6 +1,7 @@
 import {
   _getRequest,
   _postRequest,
+  _putRequest
 } from "global/api/axios";
 
 export const getAllProducts = async (query) => {
@@ -21,4 +22,12 @@ export const getAllCategories = async () => {
 
 export const userLogin = async (params) => {
   return await _postRequest("auth/login", params);
+}
+
+export const getUserInfo = async () => {
+  return await _getRequest("users/1", );
+}
+
+export const updateUserInfo = async (data) => {
+  return await _putRequest("users/1", data);
 }

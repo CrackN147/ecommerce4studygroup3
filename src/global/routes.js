@@ -7,7 +7,8 @@ import {
   FavoritesPage,
   GalleryPage,
   ProductPage,
-  SearchPage
+  SearchPage,
+  ProfilePage
 } from 'pages';
 export const routes = [
   {
@@ -29,6 +30,30 @@ export const routes = [
   {
     path: "/:lang/search",
     element: <SearchPage/>,
+  },
+  {
+    path: "/:lang/profile",
+    element: <ProfilePage/>,
+  },
+  {
+    path: "/:lang/cart",
+    element: <CartPage/>,
+  },
+  {
+    path: "/:lang/checkout",
+    element: <CheckOutPage/>,
+  },
+  {
+    path: "/:lang/contact",
+    element: <ContactPage/>,
+  },
+  {
+    path: "/:lang/gallery",
+    element: <GalleryPage/>,
+  },
+  {
+    path: "/:lang/favorites",
+    element: <FavoritesPage/>,
   },
   {
     path: "*",

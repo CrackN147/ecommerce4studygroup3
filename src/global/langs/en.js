@@ -34,5 +34,23 @@ export const enLangs = {
     password: "Password",
     login: "Login",
     required: "Required",
+  },
+  profileMenu: {
+    title: "Hello",
+    profile: "Profile",
+    logout: "Logout",
+  },
+  profilePage: {
+    title: "Profile",
+    name: "Name",
+    lastname: "Lastname",
+    email: "Email",
+    phone: "Phone",
+    address: "Address",
+    city: "City",
+    street: "Street",
+    number: "Number",
+    zip: "Zip Code",
+    save: "Save"
   }
 };

@@ -24,3 +24,9 @@ export const _postRequest = async (url, params = {}) => {
   const response = await axios.post(apiURL + url, params);
   return response.data;
 }
+
+export const _putRequest = async (url, params = {}) => {
+  checkHeaders();
+  const response = await axios.put(apiURL + url, params);
+  return response.data;
+}
