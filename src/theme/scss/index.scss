@@ -133,6 +133,7 @@ a {
   h3 {
     font-size: 16px;
     font-weight: 600;
+    height: 40px;
   }
 
   p {
@@ -181,6 +182,7 @@ a {
   }
 
   .search-product-card {
+    flex-direction: column;
     width: 200px;
   }
 }
@@ -394,16 +396,17 @@ a {
 
       .address-form-container {
         display: flex;
-      align-items: center;
-      width: 100%;
-      padding: 10px;
-      flex-wrap: wrap;
-      flex-direction: row;
-      background-color: transparent;
-      box-shadow: none;
-      border: none;
-      margin: 0;
-      padding: 0;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+
         div {
           display: flex;
           flex-direction: column;
@@ -414,6 +417,7 @@ a {
           border-radius: 20px;
           margin: 2%;
         }
+
         h3 {
           font-size: 14px;
           font-weight: bold;
@@ -431,6 +435,77 @@ a {
         width: 50%;
         margin: 0 auto;
       }
+    }
+  }
+}
+
+.w-25 {
+  width: 25% !important;
+}
+
+.cart-count {
+  position: absolute;
+  top: -2px;
+  right: -8px;
+  z-index: 99;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: red;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 8px;
+  font-weight: bold;
+}
+
+.add-to-cart-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .add-to-cart-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe8e8b2;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 5px 10px;
+    text-align: center;
+
+    img {
+      padding: 0;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      object-fit: fill;
+    }
+  }
+
+  .quantity-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 50%;
+    margin: 10px auto;
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffe8e8b2;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      padding: 5px 10px;
+      text-align: center;
+    }
+    span {
+      padding: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0 10px;
     }
   }
 }

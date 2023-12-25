@@ -21,7 +21,6 @@ export const Pagination = () => {
     newSearchParams.set('page', page);
     setSearchParams(newSearchParams);
   }
-  console.log(pagination);
   return (
     <div className='pagination'>
       {pagination.page > 1 ?

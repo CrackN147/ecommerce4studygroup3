@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react';
 import { StaticDataContext } from 'global/contexts/StaticDataContext';
 import { UserDataContext } from 'global/contexts/UserDataContext';
+import { CartDataContext } from 'global/contexts/CartDataContext';
 import { Link } from "react-router-dom";
 import logo from 'theme/images/logo.jpg';
-import cart from 'theme/images/shopping-cart.png';
+import shopingCart from 'theme/images/shopping-cart.png';
 import fav from 'theme/images/favorite.png';
 import profile from 'theme/images/profile.svg';
 import userActive from 'theme/images/userActive.svg';
@@ -13,6 +14,7 @@ import { ProfileMenu } from 'components/modals/ProfileMenu';
 export const Header = () => {
   const { lang, langs, changeLanguage } = useContext(StaticDataContext);
   const { isUser } = useContext(UserDataContext);
+  const { cart } = useContext(CartDataContext);
   const [loginModal, setLoginModal] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
   const toggleLoginForm = () => {
@@ -56,8 +58,11 @@ export const Header = () => {
         <div className='col col-2 d-flex justify-content-center align-items-center'>
           <div className='row w-100'>
             <div className='col col-3 d-flex justify-content-center align-items-center'>
-              <Link to={`/${lang}/cart`}>
-                <img width="16" height="16" src={cart} alt='cart' />
+              <Link to={`/${lang}/cart`} className='position-relative'>
+                {cart.length > 0 ?
+                  <span className='cart-count'>{cart.length}</span>  
+                : null}
+                <img width="16" height="16" src={shopingCart} alt='cart' />
               </Link>
             </div>
             <div className='col col-3 d-flex justify-content-center align-items-center'>

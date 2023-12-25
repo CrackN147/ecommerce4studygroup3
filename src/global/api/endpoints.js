@@ -31,3 +31,11 @@ export const getUserInfo = async () => {
 export const updateUserInfo = async (data) => {
   return await _putRequest("users/1", data);
 }
+
+export const getUserCart = async () => {
+  return await _getRequest("carts/user/1");
+}
+
+export const updateCart = async (cartID, data) => {
+  return await _putRequest(`carts/${cartID}`, data);
+}

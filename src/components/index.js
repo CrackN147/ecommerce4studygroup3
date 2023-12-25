@@ -4,3 +4,4 @@ export {Sidebar} from './sidebar/Sidebar';
 export * from './sliders';
 export * from './cards';
 export * from './modals';
+export * from './buttons';
