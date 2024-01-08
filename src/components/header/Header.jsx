@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { StaticDataContext } from 'global/contexts/StaticDataContext';
 import { UserDataContext } from 'global/contexts/UserDataContext';
 import { CartDataContext } from 'global/contexts/CartDataContext';
+import { FavsDataContext } from 'global/contexts/FavsDataContext';
 import { Link } from "react-router-dom";
 import logo from 'theme/images/logo.jpg';
 import shopingCart from 'theme/images/shopping-cart.png';
@@ -15,6 +16,7 @@ export const Header = () => {
   const { lang, langs, changeLanguage } = useContext(StaticDataContext);
   const { isUser } = useContext(UserDataContext);
   const { cart } = useContext(CartDataContext);
+  const { favs } = useContext(FavsDataContext);
   const [loginModal, setLoginModal] = useState(false);
   const [profileMenu, setProfileMenu] = useState(false);
   const toggleLoginForm = () => {
@@ -60,13 +62,16 @@ export const Header = () => {
             <div className='col col-3 d-flex justify-content-center align-items-center'>
               <Link to={`/${lang}/cart`} className='position-relative'>
                 {cart.length > 0 ?
-                  <span className='cart-count'>{cart.length}</span>  
-                : null}
+                  <span className='cart-count'>{cart.length}</span>
+                  : null}
                 <img width="16" height="16" src={shopingCart} alt='cart' />
               </Link>
             </div>
             <div className='col col-3 d-flex justify-content-center align-items-center'>
-              <Link to={`/${lang}/favorites`}>
+              <Link to={`/${lang}/favorites`} className='position-relative'>
+                {favs.length > 0 ?
+                  <span className='cart-count'>{favs.length}</span>
+                  : null}
                 <img width="16" height="16" src={fav} alt='fav' />
               </Link>
             </div>
@@ -83,16 +88,16 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      {loginModal ? 
+      {loginModal ?
         <LoginForm
           toggle={toggleLoginForm}
         />
-      : null}
-      {profileMenu ? 
+        : null}
+      {profileMenu ?
         <ProfileMenu
           toggle={toggleProfileMenu}
         />
-      : null}
+        : null}
     </header>
   );
 }

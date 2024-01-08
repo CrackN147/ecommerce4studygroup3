@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { StaticDataContext } from "global/contexts/StaticDataContext";
-import { AddToCartButton } from "components";
+import { AddToCartButton, SwitchFavsButton } from "components";
 export const SearchProductCard = ({ product }) => {
   const { lang, langs } = useContext(StaticDataContext);
   return (
-    <div className='d-flex justify-content-center align-items-center search-product-card'>
+    <div className='d-flex justify-content-center align-items-center search-product-card position-relative'>
+      <SwitchFavsButton
+        productId={product.id}
+      />
       <Link to={`/${lang}/product/${product.id}`}
         className="home-product-card d-flex justify-content-center align-items-center"
       >

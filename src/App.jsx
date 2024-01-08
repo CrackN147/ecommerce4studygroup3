@@ -9,6 +9,7 @@ import {
 import { ProductDataProvider } from 'global/contexts/ProductsDataContext';
 import { UserDataProvider } from 'global/contexts/UserDataContext';
 import { CartDataProvider } from 'global/contexts/CartDataContext';
+import { FavsDataProvider } from 'global/contexts/FavsDataContext';
 const checkLanguage = () => {
   let windowUrl = window.location.href;
   let windowUrlArray = windowUrl.split('/');
@@ -27,6 +28,7 @@ const App = () => {
         <UserDataProvider>
           <ProductDataProvider>
             <CartDataProvider>
+            <FavsDataProvider>
             <Header />
             <Routes>
               {routes.map((route, index) => (
@@ -38,6 +40,7 @@ const App = () => {
               ))}
             </Routes>
             <Footer />
+            </FavsDataProvider>
             </CartDataProvider>
           </ProductDataProvider>
         </UserDataProvider>

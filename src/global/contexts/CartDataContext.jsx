@@ -1,11 +1,13 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import moment from "moment";
 import { ProductDataContext } from "global/contexts/ProductsDataContext";
+import { UserDataContext } from "global/contexts/UserDataContext";
 import { getUserCart, updateCart } from "global/api/endpoints";
 export const CartDataContext = createContext();
 
 export const CartDataProvider = ({ children }) => {
   const { baseProducts } = useContext(ProductDataContext);
+  const { userInfo } = useContext(UserDataContext);
   const [cartID, setCartID] = useState();
   const [cart, setCart] = useState([]);
 
@@ -24,17 +26,28 @@ export const CartDataProvider = ({ children }) => {
 
   const callUpdateCart = async (productId, quantity) => {
     let index = cart.findIndex(item => item.id === productId);
-    if (index !== -1) {
+    if (index > -1) {
       let newCart = [...cart];
       newCart[index].quantity = quantity;
       setCart(newCart);
-      const apiUpdateCart = await updateCart(cartID, newCart);
-      if (apiUpdateCart) {
-        console.log(apiUpdateCart);
-      }
+    }
+    const apiUpdateCart = await updateCart(cartID, {
+      userId: userInfo.id,
+      date: moment().format("YYYY-MM-DD"),
+      products: [{ productId: productId, quantity: quantity }]
+    });
+    if (apiUpdateCart && index === -1) {
+      let newCart = [...cart];
+      newCart.push(
+        {
+          quantity: quantity,
+          ...baseProducts.find(item => item.id === productId)
+        }
+      );
+      setCart(newCart);
     }
   }
-  
+
   useEffect(() => {
     const fetchCart = async () => {
       const cart = await getUserCart();
